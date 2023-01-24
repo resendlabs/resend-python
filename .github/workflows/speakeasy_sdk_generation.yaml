@@ -1,0 +1,20 @@
+name: Generate
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: 0 0 * * *
+
+jobs:
+  generate:
+    name: Generate SDK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: speakeasy-api/sdk-generation-action@v7
+        with:
+          speakeasy_version: latest
+          openapi_doc_location: ./resend_openapi.yaml
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          languages: |-
+            - python
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}

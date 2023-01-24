@@ -1,0 +1,4 @@
+python:
+  packagename: resend-client-sdk-python 
+  version: 0.0.1
+telemetryenabled: true

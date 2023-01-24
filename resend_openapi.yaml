@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: Resend API
+  version: 0.1.0
+  description: "Resend is the email platform for developers."
+servers:
+  - url: https://api.resend.com
+tags:
+  - name: emails
+    description: Email operations
+security:
+  - bearerAuth: []
+paths:
+  /emails:
+    post:
+      tags:
+        - emails
+      summary: Send an email
+      operationId: sendEmail
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 5000       # 5 seconds
+          maxInterval: 60000          # 60 seconds
+          maxElapsedTime: 3600000     # 5 minutes
+          exponent: 1.5
+        statusCodes:
+          - 500
+        retryConnectionErrors: true
+      requestBody:
+        description: Email to send
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Email'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Email:
+      type: object
+      required:
+        - to
+        - from
+        - subject
+      properties:
+        to:
+          type: string
+          description: Recipient email address. Multiple addresses are comma separated. Max 50.
+        from:
+          type: string
+          description: Sender email address. To include a friendly name, use the format "Your Name <sender@domain.com>".
+        subject:
+          type: string
+          description: Email subject.
+        bcc:
+          type: string
+          description: Bcc recipient email address. Multiple addresses are comma separated. Max 50.
+        cc:
+          type: string
+          description: Cc recipient email address. Multiple addresses are comma separated. Max 50.
+        reply_to:
+          type: string
+          description: Reply-to email address.
+        html:
+          type: string
+          description: The HTML version of the message.
+        text:
+          type: string
+          description: The plain text version of the message.
+        react:
+          type: string
+          description: The React component used to write the message. Only available in the Node.js SDK.
+    SendEmailResponse:
+      type: object
+      required:
+        - id
+        - from
+        - to
+        - created_at
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the sent email.
+        from:
+          type: string
+          description: The sender email address.
+        to:
+          type: string
+          description: The recipient email address.
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the email was sent.
+
