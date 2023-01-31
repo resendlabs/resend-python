@@ -1,8 +1,8 @@
 management:
     openapi-checksum: 4b29d80eb38b2efcde4d130ce4cdd395
     openapi-version: 0.1.0
-    speakeasy-version: 0.21.0
+    speakeasy-version: 0.21.1
 python:
-    version: 0.1.0
+    version: 0.1.1
     packagename: resend-client-sdk-python
 telemetryenabled: true
