@@ -1,11 +1,8 @@
 
-
 import requests
-from sdk.models import shared
 from . import utils
-
 from .emails import Emails
-
+from sdk.models import shared
 
 SERVERS = [
 	"https://api.resend.com",
@@ -21,8 +18,8 @@ class SDK:
     _security: shared.Security
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.2.1"
-    _gen_version: str = "0.22.1"
+    _sdk_version: str = "1.0.0"
+    _gen_version: str = "1.0.0"
 
     def __init__(self) -> None:
         self._client = requests.Session()

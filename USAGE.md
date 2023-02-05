@@ -11,18 +11,18 @@ s.config_security(
         ),
     )
 )
-    
+   
 req = operations.SendEmailRequest(
     request=shared.Email(
-        bcc="sit",
-        cc="voluptas",
-        from_="culpa",
-        html="expedita",
-        react="consequuntur",
-        reply_to="dolor",
-        subject="expedita",
-        text="voluptas",
-        to="fugit",
+        bcc="unde",
+        cc="deserunt",
+        from_="porro",
+        html="nulla",
+        react="id",
+        reply_to="vero",
+        subject="perspiciatis",
+        text="nulla",
+        to="nihil",
     ),
 )
     

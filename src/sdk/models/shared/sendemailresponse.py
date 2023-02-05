@@ -1,8 +1,8 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
 from dataclasses_json import dataclass_json
+from datetime import datetime
+from marshmallow import fields
 from sdk import utils
 
 

@@ -1,8 +1,8 @@
 import dataclasses
-from typing import Optional
-from sdk import utils
 from ..shared import email as shared_email
 from ..shared import sendemailresponse as shared_sendemailresponse
+from ..utils import retryconfig as utils_retryconfig
+from typing import Optional
 
 
 @dataclasses.dataclass
