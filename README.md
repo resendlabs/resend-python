@@ -1,12 +1,8 @@
-<<<<<<< Updated upstream
-# resend-client-sdk-python
-=======
 # Resend Python SDK
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Resend is the email platform for developers. Learn more on our [docsite](https://resend.com/docs/api-reference/concepts) 
->>>>>>> Stashed changes
 
 <!-- Start SDK Installation -->
 ## SDK Installation
