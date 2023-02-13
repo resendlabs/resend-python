@@ -6,3 +6,4 @@ python:
     version: 1.3.0
     packagename: resend-client-sdk-python
 telemetryenabled: true
+sdkclassname: resend
