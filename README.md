@@ -15,10 +15,10 @@ pip install resend-client-sdk-python
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import sdk
-from sdk.models import operations, shared
+import resend
+from resend.models import operations, shared
 
-s = sdk.SDK()
+s = resend.Resend()
 s.config_security(
     security=shared.Security(
         bearer_auth=shared.SchemeBearerAuth(

@@ -1,6 +1,6 @@
 import dataclasses
 from dataclasses_json import dataclass_json
-from sdk import utils
+from resend import utils
 from typing import Optional
 
 
