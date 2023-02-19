@@ -1,7 +1,12 @@
 name: Generate
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Force the generation of the SDKs"
+        type: boolean
+        default: false
   schedule:
     - cron: 0 0 * * *
 
@@ -10,12 +15,13 @@ jobs:
     name: Generate SDK
     runs-on: ubuntu-latest
     steps:
-      - uses: speakeasy-api/sdk-generation-action@v9
+      - uses: speakeasy-api/sdk-generation-action@v10
         with:
           speakeasy_version: latest
-          openapi_doc_location: https://github.com/resendlabs/resend-openapi/blob/main/resend.yaml
+          openapi_doc_location: https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           languages: |-
             - python
           mode: pr
           speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+          force: ${{ github.event.inputs.force }}
