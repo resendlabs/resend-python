@@ -6,15 +6,15 @@ info:
 servers:
   - url: https://api.resend.com
 tags:
-  - name: emails
+  - name: email
     description: Email operations
 security:
   - bearerAuth: []
 paths:
-  /emails:
+  /email:
     post:
       tags:
-        - emails
+        - email
       summary: Send an email
       operationId: sendEmail
       x-speakeasy-retries:
