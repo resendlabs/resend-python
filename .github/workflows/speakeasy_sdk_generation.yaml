@@ -13,7 +13,7 @@ jobs:
       - uses: speakeasy-api/sdk-generation-action@v7
         with:
           speakeasy_version: latest
-          openapi_doc_location: ./resend_openapi.yaml
+          openapi_doc_location: https://github.com/resendlabs/resend-openapi/blob/main/resend.yaml
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           languages: |-
             - python
