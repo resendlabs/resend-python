@@ -1,6 +1,6 @@
 import requests
 from . import utils
-from sdk.models import operations, shared
+from resend.models import operations, shared
 from typing import Optional
 
 class Emails:
