@@ -1,4 +1,4 @@
-src/resend/emails.py
+src/resend/email.py
 src/resend/sdk.py
 setup.py
 src/resend/models/operations/sendemail.py

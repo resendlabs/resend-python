@@ -1,7 +1,7 @@
 
 import requests
 from . import utils
-from .emails import Emails
+from .email import Email
 from resend.models import shared
 
 SERVERS = [
@@ -11,7 +11,7 @@ SERVERS = [
 
 class Resend:
     
-    emails: Emails
+    email: Email
 
     _client: requests.Session
     _security_client: requests.Session
@@ -52,7 +52,7 @@ class Resend:
     
     def _init_sdks(self):
         
-        self.emails = Emails(
+        self.email = Email(
             self._client,
             self._security_client,
             self._server_url,

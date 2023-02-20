@@ -3,7 +3,7 @@ from . import utils
 from resend.models import operations, shared
 from typing import Optional
 
-class Emails:
+class Email:
     _client: requests.Session
     _security_client: requests.Session
     _server_url: str
@@ -26,7 +26,7 @@ class Emails:
         
         base_url = self._server_url
         
-        url = base_url.removesuffix("/") + "/emails"
+        url = base_url.removesuffix("/") + "/email"
         
         headers = {}
         req_content_type, data, json, files = utils.serialize_request_body(request)
