@@ -18,15 +18,14 @@ req = operations.SendEmailRequest(
         cc="deserunt",
         from_="porro",
         html="nulla",
-        react="id",
-        reply_to="vero",
-        subject="perspiciatis",
-        text="nulla",
-        to="nihil",
+        reply_to="id",
+        subject="vero",
+        text="perspiciatis",
+        to="nulla",
     ),
 )
     
-res = s.emails.send_email(req)
+res = s.email.send_email(req)
 
 if res.send_email_response is not None:
     # handle response

@@ -10,7 +10,7 @@ jobs:
     name: Generate SDK
     runs-on: ubuntu-latest
     steps:
-      - uses: speakeasy-api/sdk-generation-action@v7
+      - uses: speakeasy-api/sdk-generation-action@v9
         with:
           speakeasy_version: latest
           openapi_doc_location: https://github.com/resendlabs/resend-openapi/blob/main/resend.yaml
