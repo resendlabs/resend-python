@@ -1,12 +1,15 @@
 src/resend/email.py
 src/resend/sdk.py
 setup.py
+src/resend/__init__.py
+src/resend/models/__init__.py
+src/resend/utils/__init__.py
+src/resend/utils/retries.py
+src/resend/utils/utils.py
 src/resend/models/operations/sendemail.py
 src/resend/models/operations/__init__.py
 src/resend/models/shared/sendemailresponse.py
 src/resend/models/shared/email.py
 src/resend/models/shared/security.py
 src/resend/models/shared/__init__.py
-src/resend/models/utils/sendemail.py
-src/resend/models/utils/__init__.py
 USAGE.md
