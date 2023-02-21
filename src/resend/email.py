@@ -38,18 +38,7 @@ class Email:
         
         client = self._security_client
         
-        retry_config = request.retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig("backoff", True)
-            retry_config.backoff = utils.BackoffStrategy(5000, 60000, 1.5, 3600000)
-            
-
-        def do_request():
-            return client.request("POST", url, data=data, json=json, files=files, headers=headers)
-        
-        r = utils.retry(do_request, utils.Retries(retry_config, [
-            "500"
-        ]))
+        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.SendEmailResponse(status_code=r.status_code, content_type=content_type)
