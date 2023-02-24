@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import email as shared_email
 from ..shared import sendemailresponse as shared_sendemailresponse
