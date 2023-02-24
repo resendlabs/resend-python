@@ -1,12 +1,11 @@
 <div align="center">
     <picture>
-        <source srcset="https://user-images.githubusercontent.com/68016351/221070336-93af990c-4e39-41aa-8f0e-81ce779ed398.svg
-" media="(prefers-color-scheme: dark)" width="500">
+        <source srcset="https://user-images.githubusercontent.com/68016351/221072893-61d9e99a-ed2a-4f58-b167-0ff2cbea0614.svg" media="(prefers-color-scheme: dark)" width="500">
         <img src="https://user-images.githubusercontent.com/68016351/221070388-c5faf78a-d3b7-440b-a300-c2e7b635279b.svg" width="500">
     </picture>
    <p>Resend is the email platform for developers.</p>
    <a href="https://resend.com/docs/api-reference/concepts"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000000&style=for-the-badge" /></a>
-   <a href=""><img src="https://img.shields.io/github/actions/workflow/status/resendlabs/resend-python/speakeasy_sdk_generation.yaml?style=for-the-badge" /></a>
+   <a href="https://github.com/resendlabs/resend-python/actions"><img src="https://img.shields.io/github/actions/workflow/status/resendlabs/resend-python/speakeasy_sdk_generation.yaml?style=for-the-badge" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" /></a>
   <a href="https://github.com/resendlabs/resend-python/releases"><img src="https://img.shields.io/github/v/release/resendlabs/resend-python?sort=semver&style=for-the-badge" /></a>
 </div>
