@@ -41,9 +41,13 @@ def configure_security_client(client: requests.Session, security: dataclass):
             continue
         if metadata.get('option'):
             _parse_security_option(client, value)
-            return
+            return client
         elif metadata.get('scheme'):
-            _parse_security_scheme(client, metadata, value)
+            # Special case for basic auth which could be a flattened struct
+            if metadata.get("sub_type") == "basic" and not is_dataclass(value):
+                _parse_security_scheme(client, metadata, security)
+            else:
+                _parse_security_scheme(client, metadata, value)
 
     return client
 
@@ -54,47 +58,60 @@ def _parse_security_option(client: SecurityClient, option: dataclass):
         metadata = opt_field.metadata.get('security')
         if metadata is None or metadata.get('scheme') is None:
             continue
-        _parse_security_scheme(client, metadata.get(
-            'scheme'), getattr(option, opt_field.name))
+        _parse_security_scheme(
+            client, metadata, getattr(option, opt_field.name))
 
 
-def _parse_security_scheme(client: SecurityClient, scheme_metadata: dict, scheme: dataclass):
+def _parse_security_scheme(client: SecurityClient, scheme_metadata: dict, scheme: any):
     scheme_type = scheme_metadata.get('type')
     sub_type = scheme_metadata.get('sub_type')
 
-    if scheme_type == 'http' and sub_type == 'basic':
-        _parse_basic_auth_scheme(client, scheme)
-        return
+    if is_dataclass(scheme):
+        if scheme_type == 'http' and sub_type == 'basic':
+            _parse_basic_auth_scheme(client, scheme)
+            return
 
-    scheme_fields: Tuple[Field, ...] = fields(scheme)
-    for scheme_field in scheme_fields:
-        metadata = scheme_field.metadata.get('security')
-        if metadata is None or metadata.get('field_name') is None:
-            continue
+        scheme_fields: Tuple[Field, ...] = fields(scheme)
+        for scheme_field in scheme_fields:
+            metadata = scheme_field.metadata.get('security')
+            if metadata is None or metadata.get('field_name') is None:
+                continue
 
-        header_name = metadata.get('field_name')
-        value = getattr(scheme, scheme_field.name)
+            value = getattr(scheme, scheme_field.name)
 
-        if scheme_type == "apiKey":
-            if sub_type == 'header':
-                client.client.headers[header_name] = value
-            elif sub_type == 'query':
-                client.query_params[header_name] = value
-            elif sub_type == 'cookie':
-                client.client.cookies[header_name] = value
-            else:
-                raise Exception('not supported')
-        elif scheme_type == "openIdConnect":
+            _parse_security_scheme_value(
+                client, scheme_metadata, metadata, value)
+    else:
+        _parse_security_scheme_value(
+            client, scheme_metadata, scheme_metadata, scheme)
+
+
+def _parse_security_scheme_value(client: SecurityClient, scheme_metadata: dict, security_metadata: dict, value: any):
+    scheme_type = scheme_metadata.get('type')
+    sub_type = scheme_metadata.get('sub_type')
+
+    header_name = security_metadata.get('field_name')
+
+    if scheme_type == "apiKey":
+        if sub_type == 'header':
             client.client.headers[header_name] = value
-        elif scheme_type == 'oauth2':
-            client.client.headers[header_name] = value
-        elif scheme_type == 'http':
-            if sub_type == 'bearer':
-                client.client.headers[header_name] = value
-            else:
-                raise Exception('not supported')
+        elif sub_type == 'query':
+            client.query_params[header_name] = value
+        elif sub_type == 'cookie':
+            client.client.cookies[header_name] = value
         else:
             raise Exception('not supported')
+    elif scheme_type == "openIdConnect":
+        client.client.headers[header_name] = value
+    elif scheme_type == 'oauth2':
+        client.client.headers[header_name] = value
+    elif scheme_type == 'http':
+        if sub_type == 'bearer':
+            client.client.headers[header_name] = value
+        else:
+            raise Exception('not supported')
+    else:
+        raise Exception('not supported')
 
 
 def _parse_basic_auth_scheme(client: SecurityClient, scheme: dataclass):
