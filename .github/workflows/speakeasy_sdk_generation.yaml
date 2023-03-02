@@ -15,13 +15,15 @@ jobs:
     name: Generate SDK
     runs-on: ubuntu-latest
     steps:
-      - uses: speakeasy-api/sdk-generation-action@v10
+      - uses: speakeasy-api/sdk-generation-action@v13
         with:
           speakeasy_version: latest
           openapi_doc_location: https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           languages: |-
             - python
+          publish_python: true
           mode: pr
           speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
           force: ${{ github.event.inputs.force }}
