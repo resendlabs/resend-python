@@ -89,3 +89,11 @@ Based on:
 Based on:
 - OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
 - Speakeasy CLI 1.8.2 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-04 07:26:07
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.8.2 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.8.1] https://pypi.org/project/resend-client-sdk-python/1.8.1 - .
