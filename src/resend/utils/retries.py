@@ -50,67 +50,67 @@ class PermanentError(Exception):
         self.inner = inner
 
 
-def retry(fn, retries: Retries):
+def retry(func, retries: Retries):
     if retries.config.strategy == 'backoff':
         def do_request():
             res: requests.Response
             try:
-                res = fn()
+                res = func()
 
                 for code in retries.status_codes:
                     if "X" in code.upper():
-                        codeRange = int(code[0])
+                        code_range = int(code[0])
 
-                        s = res.status_code / 100
+                        status_major = res.status_code / 100
 
-                        if s >= codeRange and s < codeRange + 1:
+                        if status_major >= code_range and status_major < code_range + 1:
                             raise TemporaryError(res)
                     else:
                         parsed_code = int(code)
 
                         if res.status_code == parsed_code:
                             raise TemporaryError(res)
-            except requests.exceptions.ConnectionError as e:
+            except requests.exceptions.ConnectionError as exception:
                 if not retries.config.config.retry_connection_errors:
                     raise
-                else:
-                    raise PermanentError(e)
-            except requests.exceptions.Timeout as e:
+
+                raise PermanentError(exception) from exception
+            except requests.exceptions.Timeout as exception:
                 if not retries.config.config.retry_connection_errors:
                     raise
-                else:
-                    raise PermanentError(e)
+
+                raise PermanentError(exception) from exception
             except TemporaryError:
                 raise
-            except Exception as e:
-                raise PermanentError(e)
+            except Exception as exception:
+                raise PermanentError(exception) from exception
 
             return res
 
         return retry_with_backoff(do_request, retries.config.backoff.initial_interval, retries.config.backoff.max_interval, retries.config.backoff.exponent, retries.config.backoff.max_elapsed_time)
-    else:
-        fn()
+
+    return func()
 
 
-def retry_with_backoff(fn, initial_interval=500, max_interval=60000, exponent=1.5, max_elapsed_time=3600000):
+def retry_with_backoff(func, initial_interval=500, max_interval=60000, exponent=1.5, max_elapsed_time=3600000):
     start = round(time.time()*1000)
-    x = 0
+    retries = 0
 
     while True:
         try:
-            return fn()
-        except PermanentError as e:
-            raise e.inner
-        except Exception as e:
+            return func()
+        except PermanentError as exception:
+            raise exception.inner
+        except Exception as exception:  # pylint: disable=broad-exception-caught
             now = round(time.time()*1000)
             if now - start > max_elapsed_time:
-                if isinstance(e, TemporaryError):
-                    return e.response
-                else:
-                    raise
+                if isinstance(exception, TemporaryError):
+                    return exception.response
+
+                raise
             sleep = ((initial_interval/1000) *
-                     exponent**x + random.uniform(0, 1))
+                     exponent**retries + random.uniform(0, 1))
             if sleep > max_interval/1000:
                 sleep = max_interval/1000
             time.sleep(sleep)
-            x += 1
+            retries += 1

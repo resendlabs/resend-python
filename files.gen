@@ -1,5 +1,6 @@
 src/resend/email.py
 src/resend/sdk.py
+pylintrc
 setup.py
 src/resend/__init__.py
 src/resend/models/__init__.py
