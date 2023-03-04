@@ -25,5 +25,4 @@ jobs:
           publish_python: true
           mode: pr
           speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
-          pypi_token: ${{ secrets.PYPI_TOKEN }}
           force: ${{ github.event.inputs.force }}
