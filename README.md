@@ -35,9 +35,7 @@ from resend.models import operations, shared
 s = resend.Resend()
 s.config_security(
     security=shared.Security(
-        bearer_auth=shared.SchemeBearerAuth(
-            authorization="Bearer YOUR_BEARER_TOKEN_HERE",
-        ),
+        bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
     )
 )
    
