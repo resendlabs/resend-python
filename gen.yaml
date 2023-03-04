@@ -6,6 +6,7 @@ management:
 generation:
     telemetryEnabled: true
     sdkClassName: resend
+    sdkFlattening: true
 python:
     version: 1.8.0
     author: Speakeasy
