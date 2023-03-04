@@ -1,4 +1,3 @@
-<!-- Start SDK Example Usage -->
 ```python
 import resend
 from resend.models import operations, shared
@@ -12,14 +11,10 @@ s.config_security(
    
 req = operations.SendEmailRequest(
     request=shared.Email(
-        bcc="unde",
-        cc="deserunt",
-        from_="porro",
-        html="nulla",
-        reply_to="id",
-        subject="vero",
-        text="perspiciatis",
-        to="nulla",
+        from_="hello@resend.com",
+        to="thefuture@yourcompany.com",
+        subject="Welcome to Resend!",
+        text="Hello, World!",
     ),
 )
     
@@ -28,4 +23,3 @@ res = s.email.send_email(req)
 if res.send_email_response is not None:
     # handle response
 ```
-<!-- End SDK Example Usage -->
