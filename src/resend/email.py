@@ -1,17 +1,17 @@
-import requests
+import requests as requests_http
 from . import utils
 from resend.models import operations, shared
 from typing import Optional
 
 class Email:
-    _client: requests.Session
-    _security_client: requests.Session
+    _client: requests_http.Session
+    _security_client: requests_http.Session
     _server_url: str
     _language: str
     _sdk_version: str
     _gen_version: str
 
-    def __init__(self, client: requests.Session, security_client: requests.Session, server_url: str, language: str, sdk_version: str, gen_version: str) -> None:
+    def __init__(self, client: requests_http.Session, security_client: requests_http.Session, server_url: str, language: str, sdk_version: str, gen_version: str) -> None:
         self._client = client
         self._security_client = security_client
         self._server_url = server_url
