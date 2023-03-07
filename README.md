@@ -14,7 +14,7 @@
 ## SDK Installation
 
 ```bash
-pip install resend-client-sdk-python
+pip install resend-python
 ```
 <!-- End SDK Installation -->
 
