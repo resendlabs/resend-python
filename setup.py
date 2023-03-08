@@ -8,7 +8,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="resend-python",
-    version="1.8.3",
+    version="1.8.4",
     author="Resend",
     description="Python SDK for Resend API",
     long_description=long_description,
