@@ -2,13 +2,13 @@ configVersion: 1.0.0
 management:
   docChecksum: 70864ba961d69e4ff7e191e6d9b7401f
   docVersion: 0.1.1
-  speakeasyVersion: 1.8.6
+  speakeasyVersion: 1.8.7
 generation:
   telemetryEnabled: true
   sdkClassName: resend
   sdkFlattening: true
 python:
-  version: 1.8.4
+  version: 1.8.5
   author: Resend
   description: Python SDK for Resend API
   packageName: resend-python
