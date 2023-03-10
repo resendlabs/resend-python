@@ -438,7 +438,8 @@ disable=raw-checker-failed,
         too-many-branches,
         chained-comparison,
         duplicate-code,
-        trailing-newlines
+        trailing-newlines,
+        too-many-public-methods
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
