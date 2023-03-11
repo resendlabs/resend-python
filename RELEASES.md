@@ -105,3 +105,43 @@ Based on:
 - Speakeasy CLI 1.8.2 https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v1.8.2] https://pypi.org/project/resend-client-sdk-python/1.8.2 - .
+
+## 2023-03-07 05:40:43
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.8.5 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.8.3] https://pypi.org/project/resend-python/1.8.3 - .
+
+## 2023-03-08 01:02:49
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.8.6 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.8.4] https://pypi.org/project/resend-python/1.8.4 - .
+
+## 2023-03-09 01:03:15
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.8.7 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.8.5] https://pypi.org/project/resend-python/1.8.5 - .
+
+## 2023-03-10 01:01:53
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.9.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.9.0] https://pypi.org/project/resend-python/1.9.0 - .
+
+## 2023-03-11 00:53:32
+### Changes
+Based on:
+- OpenAPI Doc 0.1.1 https://raw.githubusercontent.com/resendlabs/resend-openapi/main/resend.yaml
+- Speakeasy CLI 1.9.2 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.9.1] https://pypi.org/project/resend-python/1.9.1 - .
